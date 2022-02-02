@@ -29,9 +29,19 @@ body{
                 width:80%;
                 height:150px;
                 margin:0 auto; 
-                background-color: #93a8b7;
-                border:2px dashed lightblue; 
+                background-color: #F6F8FB;
+                border:2px dashed #97BEF4; 
                 border-radius:5px;
+                display:flex;
+                justify-content: space-around;
+                flex-direction: column;
+                span{
+                    &.material-icons{
+                        &.big{
+                            font-size:6em;
+                        }
+                    }
+                }
             }
         }
 

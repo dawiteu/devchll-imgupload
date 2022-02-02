@@ -1,4 +1,41 @@
 @import url(https://fonts.googleapis.com/css?family=Nunito);
+@font-face {
+  font-family: 'Material Icons';
+  font-style: normal;
+  font-weight: 400;
+  src: url(/fonts/vendor/material-design-icons/iconMaterialIcons-Regular.eot?4674f8ded773cb03e824323bfc950537); /* For IE6-8 */
+  src: local('Material Icons'),
+       local('MaterialIcons-Regular'),
+       url(/fonts/vendor/material-design-icons/iconMaterialIcons-Regular.woff2?cff684e59ffb052d72cb8d5e49471553) format('woff2'),
+       url(/fonts/vendor/material-design-icons/iconMaterialIcons-Regular.woff?83bebaf37c09c7e1c3ee52682892ae14) format('woff'),
+       url(/fonts/vendor/material-design-icons/iconMaterialIcons-Regular.ttf?5e7382c63da0098d634a356ff441614e) format('truetype');
+}
+
+.material-icons {
+  font-family: 'Material Icons';
+  font-weight: normal;
+  font-style: normal;
+  font-size: 24px;  /* Preferred icon size */
+  display: inline-block;
+  line-height: 1;
+  text-transform: none;
+  letter-spacing: normal;
+  word-wrap: normal;
+  white-space: nowrap;
+  direction: ltr;
+
+  /* Support for all WebKit browsers. */
+  -webkit-font-smoothing: antialiased;
+  /* Support for Safari and Chrome. */
+  text-rendering: optimizeLegibility;
+
+  /* Support for Firefox. */
+  -moz-osx-font-smoothing: grayscale;
+
+  /* Support for IE. */
+  font-feature-settings: 'liga';
+}
+
 @charset "UTF-8";
 /*!
  * Bootstrap v5.1.3 (https://getbootstrap.com/)
@@ -11314,9 +11351,15 @@ body div#app div#uploader div#dropimage {
   width: 80%;
   height: 150px;
   margin: 0 auto;
-  background-color: #93a8b7;
-  border: 2px dashed lightblue;
+  background-color: #F6F8FB;
+  border: 2px dashed #97BEF4;
   border-radius: 5px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+}
+body div#app div#uploader div#dropimage span.material-icons.big {
+  font-size: 6em;
 }
 body div#app footer {
   text-align: center;
