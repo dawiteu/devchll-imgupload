@@ -11302,13 +11302,21 @@ body div#app {
 }
 body div#app div#uploader {
   width: 100%;
-  height: 400px;
   background-color: white;
   box-shadow: 0px 0px 19px 0px #5b5b5b;
   border-radius: 10px;
   text-align: center;
-  justify-content: center;
+  justify-content: space-around;
+  align-items: center;
   flex-direction: column;
+}
+body div#app div#uploader div#dropimage {
+  width: 80%;
+  height: 150px;
+  margin: 0 auto;
+  background-color: #93a8b7;
+  border: 2px dashed lightblue;
+  border-radius: 5px;
 }
 body div#app footer {
   text-align: center;

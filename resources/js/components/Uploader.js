@@ -8,12 +8,14 @@ const Uploader = () => {
 
     return (
         <div id="uploader">
-            <h5 className="p-2">Upload your image</h5>
-            <p className="p-1" >File should be .png, .jpg...</p>
+            <h4 className="pt-5 font-weight-bold">Upload your image</h4>
+            <p className="p-2 m-3" >File should be .png, .jpg...</p>
             <div id="dropimage"></div>
-            <p>Or</p>
-            <label htmlFor="uploadmanually" onClick={manualUpload} className="btn btn-primary">Choise a file </label>
-            <input type="file" id='manualuploader' name="uploadmanually" accept=".jpg,.png" style={{visibility:'hidden'}} />
+            <p className="p-3 text-secondary">Or</p>
+            <div class="d-flex flex-column align-items-center p-3">
+                <label htmlFor="uploadmanually" onClick={manualUpload} className="w-25 btn btn-primary">Choose a file </label>
+                <input type="file" id='manualuploader' name="uploadmanually" accept=".jpg,.png" style={{visibility:'hidden'}} />
+            </div>
         </div>
     );
 }
