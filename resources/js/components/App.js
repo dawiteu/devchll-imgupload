@@ -1,11 +1,18 @@
-// resources/js/components/HelloReact.js
 
 import React from 'react';
 import ReactDOM from 'react-dom';
 
+import Footer from './Footer';
+import Uploader from './Uploader';
+
+
 const App = () => {
     return (
-        <h1>Hello World!</h1>
+        <div>
+
+            <Uploader />
+            <Footer />
+        </div>
     );
 }
 
