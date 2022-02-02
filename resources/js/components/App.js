@@ -8,7 +8,7 @@ import Uploader from './Uploader';
 
 const App = () => {
     return (
-        <div>
+        <div className="container align-items-center">
 
             <Uploader />
             <Footer />
