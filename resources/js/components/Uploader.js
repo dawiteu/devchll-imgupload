@@ -11,30 +11,34 @@ const Uploader = () => {
     const manualUpload = () => document.getElementById("manualuploader").click(); 
 
 
-    // on drop
-    const allowDrop = (e) => {
-        e.preventDefault(); 
+
+ 
+    useEffect(() =>{
+        console.log('upl erspnse: ', uplResponse); 
+    }, [uplResponse]);
+
+    const handleChange = () => {
+        console.log('handlechange');
     }
 
-    const handleDrop = (e) =>{
-        e.preventDefault();
-        //console.log('e', e); 
+    const handleUpload = e => {
+        e.preventDefault(); // stop refresh (prevent)
+        console.log('handle upload, e', e); 
 
-        let dt = e.dataTransfer; 
-        let fl = dt.files; //file
+        const input = document.querySelector("#file-upload"); 
+
+        // console.log('value', input);
+        // console.log('valuee2', input.value, input.files); 
+        // //let dt = e.dataTransfer; 
+        // //let fl = dt.files; //file
+
+        // //console.log('dt', dt);
+        // //console.log('fl', fl);
+        // console.log('---end handleupload'); 
+        const fl = input.files; 
 
         const textDrop = document.querySelector("#dropText"); 
         textDrop.innerHTML = ''; 
-
-        // Array.from(fl).forEach(file => {
-        //     if(supportedFilesTypes.includes( file.type.split("/")[1] )){
-        //         console.log('file: ', file.name, ' type: ', file.type, file);
-        //         textDrop.innerHTML += file.name + ' '; 
-        //     }else{
-        //         console.log('error on file :', file.name); 
-        //     }
-        // });
-
 
         if(fl.length === 1){ // only 1 now; 
             let file = fl[0]; 
@@ -51,11 +55,10 @@ const Uploader = () => {
 
     }
 
-
     const uploadFile = async (file) => {
         //console.log('try to upload: ', file, typeof file); 
         //const formulaire = document.querySelector("#formSubmit");
-        //formulaire.submit(); 
+        //document.removeEventListener("submit", formulaire);
         const token = document.head.querySelector('meta[name="csrf-token"]').getAttribute('content'); 
 
         const formData = new FormData(); // image: file, _token: token 
@@ -76,47 +79,35 @@ const Uploader = () => {
                 headers: { "Content-Type": "multipart/form-data" },
             })
             .then(res => {
-                console.log('res', res); 
+                //console.log('res', res); 
+                console.log('res- data:', res.data); 
+
+                
             })
             .catch(res => console.log('error res', res));
-            // let r = await fetch('/upload/', 
-            // {   method: "POST", 
-            //     body: formData, 
-            //     signal: ctrl.signal,
-            //     'Content-Type':"multipart/form-data",
-            //     "X-CSRF-TOKEN": token
-            // }
-            // ).then(res => res.json()).then(result => console.log ('result', result)); 
-            // console.log('HTTP response code:', r); 
+
         } catch(e) {
             console.log('Huston we have problem...:', e);
         }
+        //formulaire.submit(); 
     }
 
-    useEffect(() =>{
-        console.log('upl erspnse: ', uplResponse); 
-    }, [uplResponse]);
-
-    const handleChange = () => {
-        console.log('handlechange');
+    const stop = () => {
+        return false;
     }
 
-    const test = () => {
-        console.log('test changement!');
-    }
 
     return (
         <div id="uploader">
-            <form method="POST" encType="multipart/form-data" id="formSubmit" onSubmit={e => { e.preventDefault();}}>
+            <form method="POST" encType="multipart/form-data" id="formSubmit" onSubmit={stop}>
                 <h4 className="pt-5 font-weight-bold">Upload your image</h4>
                 <p className="p-2 m-3" >File should be .png, .jpg...</p>
 
-                <div id="dropimage" className="p-3" onChange={test} onDrop={(e) => handleDrop(e)} onDragOver={(e) => allowDrop(e)}>
-                        <span className="material-icons big" id="spanMatIcon">image</span> 
-
-                        <p className="font-weight-bold text-secondary" id="dropText">Drag & Drop your image here</p>
-                    </div>
-                <input type="file" name="imagedropped" />
+                <label htmlFor="imgdrop" id="dropimage" className="custom-file-upload" style={{position:"relative"}}>
+                    <span className="material-icons big" id="spanMatIcon" style={{zIndex:"1"}}>image</span> 
+                    <p className="font-weight-bold text-secondary" id="dropText" style={{zIndex:"1"}}>Drag & Drop your image here</p>
+                    <input id="file-upload" name="imgdrop" type="file" style={{zIndex:"2", position:"absolute", width:"100%", height:"100%", /*border:"1px solid black",*/ opacity:"0" }} onChange={e => handleUpload(e)} /> 
+                </label>
             
                 <p className="p-3 text-secondary">Or</p>
                 <div className="d-flex flex-column align-items-center p-3">

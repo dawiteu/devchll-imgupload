@@ -11347,7 +11347,7 @@ body div#app div#uploader {
   align-items: center;
   flex-direction: column;
 }
-body div#app div#uploader div#dropimage {
+body div#app div#uploader #dropimage {
   width: 80%;
   height: 150px;
   margin: 0 auto;
@@ -11358,7 +11358,7 @@ body div#app div#uploader div#dropimage {
   justify-content: space-around;
   flex-direction: column;
 }
-body div#app div#uploader div#dropimage span.material-icons.big {
+body div#app div#uploader #dropimage span.material-icons.big {
   font-size: 6em;
 }
 body div#app footer {
