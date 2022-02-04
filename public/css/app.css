@@ -11361,7 +11361,50 @@ body div#app div#uploader #dropimage {
 body div#app div#uploader #dropimage span.material-icons.big {
   font-size: 6em;
 }
+body div#app div#uploader #load {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+body div#app div#uploader #load #loadingbar {
+  width: 95%;
+  height: 7px;
+  background-color: #cfcfcf;
+  border-radius: 5px;
+  position: relative;
+  overflow: hidden;
+}
+body div#app div#uploader #load #loadingbar::before {
+  content: "";
+  width: 15%;
+  height: 7px;
+  background-color: blue;
+  position: absolute;
+  top: 0;
+  left: -15%;
+  -webkit-animation: loadbar 2s infinite normal;
+          animation: loadbar 2s infinite normal;
+}
 body div#app footer {
   text-align: center;
   margin-top: 10%;
+}
+
+@-webkit-keyframes loadbar {
+  from {
+    left: -15%;
+  }
+  to {
+    left: 100%;
+  }
+}
+
+@keyframes loadbar {
+  from {
+    left: -15%;
+  }
+  to {
+    left: 100%;
+  }
 }
