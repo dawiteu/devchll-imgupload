@@ -121,15 +121,34 @@ const Uploader = () => {
                     ? 
                         <div className="d-flex flex-column align-items-center">
                             <span className="material-icons text-success">check_circle</span>     
-                            <p>Fichier bien uploader!</p>
-                            <img width="400" height="400" src={"./storage/imageupload/"+response.store} alt={response.img.file_org_name} />
-                            <p>Endroit: </p><input type='text' className='input btn' value={response.store} />
-                            <p>Copier</p>
+                            <p>Uploaded Successfully!</p>
+                            <img className="img-fluid" style={{width:"90%", maxHeight:"400px", borderRadius:"15px"}} src={"./storage/imageupload/"+response.store} alt={response.img.file_org_name} />
+                            
+
+                            <input type='text' className='form-control' value={response.store} readOnly />
+                            <input type='submit' className='form-control btn btn-primary' value='Copier' />
                         </div>
                     :
                         <p>Err on loading file. {status} </p>
                 
             }
+
+            <hr />
+
+            <div className="d-flex flex-column align-items-center">
+                <span className="material-icons text-success">check_circle</span>     
+                <p>Uploaded Successfully!</p>
+                <img className="img-fluid" style={{maxHeight:"150px", borderRadius:"15px"}} src={"./storage/imageupload/XEpU3bbBUUZnjPbuPf9frczBpyJdUYwct5P4kcL4.png"} alt="alt" />
+                
+                <div className="input-group m-4" style={{width:"90%"}}>
+                    <input type='text' className='form-control' value="process.env.PUBLIC_URL" readOnly />
+
+                    <div className="input-group-append" >
+                        <input type='submit' className='input-group-text form-control btn btn-primary' value='Copier' /> 
+                    </div>
+                </div>
+            </div>
+
         </div>
     );
 }
