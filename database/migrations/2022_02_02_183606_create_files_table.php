@@ -17,7 +17,6 @@ class CreateFilesTable extends Migration
             $table->id('file_id');
             $table->string('file_org_name');
             $table->string('file_hashname');
-            $table->string('file_path');
             $table->timestamps();
         });
     }
