@@ -20,14 +20,14 @@ class AjaxController extends Controller
         
         $img = new File(); 
         $img->file_org_name = $request->file('image')->getClientOriginalName(); 
-        $img->file_hashname = $store; 
+        $img->file_hashname = explode("/", $store)[2]; 
         $img->created_at    = now();
         
         $img->save(); 
         
         //return response()->json(['status' => 200, 'storestatus' => $store]); 
         if($store){
-        return response()->json(['status' => 200, 'store' => $store, 'img' => $img]); 
+        return response()->json(['status' => 200, 'store' => $img->file_hashname, 'img' => $img]); 
 
         }
 

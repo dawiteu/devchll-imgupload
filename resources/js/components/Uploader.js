@@ -71,7 +71,10 @@ const Uploader = () => {
             setResponse(res.data); 
             setStatus(res.data.status); 
         })
-        .catch(e => console.log('error', e)); 
+        .catch(e => {
+            console.log('error', e);
+            setStatus(e);
+        }); 
     }
 
 
@@ -116,14 +119,15 @@ const Uploader = () => {
                     :
                         (status && status === 200 && response)
                     ? 
-                        <div class="d-flex flex-column align-items-center">
+                        <div className="d-flex flex-column align-items-center">
                             <span className="material-icons text-success">check_circle</span>     
                             <p>Fichier bien uploader!</p>
-                            {/* <img src="./public/storage/" alt="" /> */}
-                            <p>Endroit: {response.store} </p>
+                            <img width="400" height="400" src={"./storage/imageupload/"+response.store} alt={response.img.file_org_name} />
+                            <p>Endroit: </p><input type='text' className='input btn' value={response.store} />
+                            <p>Copier</p>
                         </div>
                     :
-                        <p>Err on loading file.</p>
+                        <p>Err on loading file. {status} </p>
                 
             }
         </div>
