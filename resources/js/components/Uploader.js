@@ -122,11 +122,16 @@ const Uploader = () => {
                         <div className="d-flex flex-column align-items-center">
                             <span className="material-icons text-success">check_circle</span>     
                             <p>Uploaded Successfully!</p>
-                            <img className="img-fluid" style={{width:"90%", maxHeight:"400px", borderRadius:"15px"}} src={"./storage/imageupload/"+response.store} alt={response.img.file_org_name} />
+                            <img className="img-fluid" style={{maxHeight:"250px", borderRadius:"15px"}} src={"./storage/imageupload/"+response.store} alt={response.img.file_org_name} />
                             
 
-                            <input type='text' className='form-control' value={response.store} readOnly />
-                            <input type='submit' className='form-control btn btn-primary' value='Copier' />
+                            <div className="input-group m-4" style={{width:"90%"}}>
+                                <input type='text' className='form-control' value={window.location.href+"storage/imageupload/"+response.store} readOnly />
+
+                                <div className="input-group-append" >
+                                    <input type='submit' className='input-group-text form-control btn btn-primary' value='Copier' /> 
+                                </div>
+                            </div>
                         </div>
                     :
                         <p>Err on loading file. {status} </p>
@@ -135,19 +140,19 @@ const Uploader = () => {
 
             <hr />
 
-            <div className="d-flex flex-column align-items-center">
+            {/* <div className="d-flex flex-column align-items-center">
                 <span className="material-icons text-success">check_circle</span>     
                 <p>Uploaded Successfully!</p>
                 <img className="img-fluid" style={{maxHeight:"150px", borderRadius:"15px"}} src={"./storage/imageupload/XEpU3bbBUUZnjPbuPf9frczBpyJdUYwct5P4kcL4.png"} alt="alt" />
                 
                 <div className="input-group m-4" style={{width:"90%"}}>
-                    <input type='text' className='form-control' value="process.env.PUBLIC_URL" readOnly />
+                    <input type='text' className='form-control' value={window.location.href} readOnly />
 
                     <div className="input-group-append" >
                         <input type='submit' className='input-group-text form-control btn btn-primary' value='Copier' /> 
                     </div>
                 </div>
-            </div>
+            </div> */}
 
         </div>
     );
