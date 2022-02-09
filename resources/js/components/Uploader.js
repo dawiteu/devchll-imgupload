@@ -20,9 +20,11 @@ const Uploader = () => {
 
 
     const [loading, setLoading] = useState(false); // not loading default; 
-    const [message, setMessage] = useState(""); 
+    const [message, setMessage] = useState(); 
     const [response, setResponse]=useState(); 
     const [status, setStatus] = useState(); 
+
+    const pathUplFile = useRef(null);
 
     const handleUpload = (e,source) => {
         e.preventDefault(); // stop refresh (prevent)
@@ -67,7 +69,7 @@ const Uploader = () => {
         .then(res => {
             console.log('respnose', res)
             setLoading(false); 
-            setMessage("Fichier bien envoyé."); 
+            //setMessage("Fichier bien envoyé."); 
             setResponse(res.data); 
             setStatus(res.data.status); 
         })
@@ -75,6 +77,11 @@ const Uploader = () => {
             console.log('error', e);
             setStatus(e);
         }); 
+    }
+
+    const copyText = () => {
+        navigator.clipboard.writeText(pathUplFile.current.value); 
+        setMessage("Link copied!");
     }
 
 
@@ -120,18 +127,18 @@ const Uploader = () => {
                         (status && status === 200 && response)
                     ? 
                         <div className="d-flex flex-column align-items-center">
-                            <span className="material-icons text-success">check_circle</span>     
+                            <span className="mx-2 material-icons text-success">check_circle</span>     
                             <p>Uploaded Successfully!</p>
                             <img className="img-fluid" style={{maxHeight:"250px", borderRadius:"15px"}} src={"./storage/imageupload/"+response.store} alt={response.img.file_org_name} />
                             
-
                             <div className="input-group m-4" style={{width:"90%"}}>
-                                <input type='text' className='form-control' value={window.location.href+"storage/imageupload/"+response.store} readOnly />
+                                <input type='text' className='form-control' ref={pathUplFile} value={window.location.href+"storage/imageupload/"+response.store} readOnly />
 
                                 <div className="input-group-append" >
-                                    <input type='submit' className='input-group-text form-control btn btn-primary' value='Copier' /> 
+                                    <input type='submit' onClick={copyText} className='input-group-text form-control btn btn-primary' value='Copy Link' /> 
                                 </div>
                             </div>
+                            <p className="text-center">{message ? message : ""}</p>
                         </div>
                     :
                         <p>Err on loading file. {status} </p>
