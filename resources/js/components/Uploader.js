@@ -35,7 +35,7 @@ const Uploader = () => {
             fl = input.files;
         }else if(source === 2){ // select file manually
             input = document.querySelector("#manualuploader");
-            console.log('input 2', input, input.files); 
+            //console.log('input 2', input, input.files); 
             fl = input.files; 
         }
 
