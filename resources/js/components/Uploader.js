@@ -67,15 +67,12 @@ const Uploader = () => {
 
         axios.post('/upload', formData)
         .then(res => {
-            console.log('respnose', res)
-            setLoading(false); 
-            //setMessage("Fichier bien envoyé."); 
+            setLoading(false); ; 
             setResponse(res.data); 
             setStatus(res.data.status); 
         })
         .catch(e => {
-            console.log('error', e);
-            setStatus(e);
+            setStatus("erreur...");
         }); 
     }
 
